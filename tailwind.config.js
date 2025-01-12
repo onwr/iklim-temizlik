@@ -7,6 +7,7 @@ export default {
         sarı: "#fcec38",
         siyah: "#000000",
         beyaz: "#ffffff",
+        yesil: "#000000",
       },
     },
   },
