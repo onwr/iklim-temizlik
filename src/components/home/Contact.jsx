@@ -39,7 +39,7 @@ const Contact = () => {
               icon: <MapPin className="w-6 h-6" />,
               title: "Adres",
               details: [data.adres],
-            }
+            },
           ]);
         } else {
           console.log("Belge bulunamadı!");
@@ -59,7 +59,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="py-20 px-4 lg:px-16 border-t">
+    <div className="py-20 bg-gray-50 px-4 lg:px-16 border-t">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-4">
           <h2 className="text-4xl font-bold text-gray-800">İletişim</h2>
@@ -74,7 +74,7 @@ const Contact = () => {
               key={index}
               className="bg-white p-6 rounded-xl shadow-lg space-y-4"
             >
-              <div className="w-12 h-12 bg-yesil/10 rounded-full flex items-center justify-center text-yesil">
+              <div className="w-12 h-12 bg-sarı/10 rounded-full flex items-center justify-center text-siyah">
                 {item.icon}
               </div>
               <div>

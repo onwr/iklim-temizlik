@@ -75,7 +75,7 @@ const About = () => {
           className="text-center space-y-4"
         >
           <h2 className="text-4xl font-bold text-gray-800">Hakkımızda</h2>
-          <div className="w-24 h-1 bg-yesil mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-siyah mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -95,12 +95,12 @@ const About = () => {
             ></p>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-yesil/10 rounded-lg">
-                <Clock className="w-6 h-6 text-yesil mb-2" />
+              <div className="p-4 bg-sarı rounded-lg">
+                <Clock className="w-6 h-6 text-siyah mb-2" />
                 <h4 className="font-semibold text-gray-800">7/24 Hizmet</h4>
               </div>
-              <div className="p-4 bg-yesil/10 rounded-lg">
-                <Shield className="w-6 h-6 text-yesil mb-2" />
+              <div className="p-4 bg-sarı rounded-lg">
+                <Shield className="w-6 h-6 text-siyah mb-2" />
                 <h4 className="font-semibold text-gray-800">Garantili İş</h4>
               </div>
             </div>
@@ -137,7 +137,7 @@ const About = () => {
             {specializations.map((spec) => (
               <div
                 key={spec.id}
-                className="bg-yesil/10 p-6 rounded-xl shadow-md text-center hover:bg-yesil hover:text-white transition-colors duration-300"
+                className="bg-sarı/50 p-6 rounded-xl shadow-md text-center hover:bg-sarı/70 hover:text-siyah transition-colors duration-300"
               >
                 {spec.name}
               </div>
@@ -150,7 +150,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-yesil/10 p-8 rounded-2xl text-center space-y-6"
+          className="bg-sarı/60 p-8 rounded-2xl text-center space-y-6"
         >
           <h3 className="text-2xl font-semibold text-gray-800">
             Profesyonel temizlik hizmetimizden faydalanmak ister misiniz?
@@ -163,7 +163,7 @@ const About = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href={"tel:" + telefon}
-            className="bg-yesil text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-yesil/90 transition-colors flex items-center justify-center gap-2 w-fit mx-auto"
+            className="bg-siyah text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-siyah/90 transition-colors flex items-center justify-center gap-2 w-fit mx-auto"
           >
             <Phone className="w-5 h-5" />
             Hemen Arayın

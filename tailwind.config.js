@@ -4,7 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        yesil: "#000000",
+        sarı: "#fcec38",
+        siyah: "#000000",
+        beyaz: "#ffffff",
       },
     },
   },

@@ -52,13 +52,13 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow relative border border-yesil/10"
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow relative border border-sarı/10"
             >
-              <Quote className="absolute text-yesil/10 w-24 h-24 -top-4 -left-4" />
+              <Quote className="absolute text-siyah/10 w-24 h-24 -top-4 -left-4" />
               <div className="relative z-10">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yesil text-yesil" />
+                    <Star key={i} className="w-5 h-5 fill-sarı text-siyah" />
                   ))}
                 </div>
                 <p className="text-gray-600 mb-6 italic">

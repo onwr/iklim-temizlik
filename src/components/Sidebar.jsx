@@ -7,9 +7,9 @@ import {
   RiCloseLine,
   RiGalleryFill,
 } from "react-icons/ri";
+import { Building } from "lucide-react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../db/Firebase";
-import { Building } from "lucide-react";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +29,6 @@ const Sidebar = () => {
 
     telCek();
   }, []);
-
   const menuItems = [
     { id: "anasayfa", title: "Anasayfa", icon: <AiOutlineHome size={24} /> },
     { id: "hakkimda", title: "Hakkımızda", icon: <Building size={24} /> },
@@ -86,8 +85,8 @@ const Sidebar = () => {
         isMobile ? "px-6" : "lg:pl-5"
       } gap-4 w-full py-4 transition-colors ${
         activeSection === item.id
-          ? "bg-yesil/40 text-yesil"
-          : "text-gray-700 hover:bg-yesil/20 hover:text-yesil"
+          ? "bg-sarı text-siyah"
+          : "text-siyah hover:bg-sarı hover:text-siyah"
       }`}
       onClick={() => isMobile && setIsOpen(false)}
     >
@@ -97,11 +96,11 @@ const Sidebar = () => {
   );
 
   const SocialAndContact = ({ isMobile = false }) => (
-    <div className={`px-4 py-0 ${isMobile ? "mt-4" : "mt-auto"}`}>
-      <div className="text-center w-full rounded-full md:rounded-t-full bg-yesil">
+    <div className={`py-0 ${isMobile ? "mt-4" : "mt-auto"}`}>
+      <div className="text-center w-full bg-sarı">
         <a
           href={"tel:" + telefon}
-          className="text-xl font-bold  text-white text-transparent hover:from-green-500 hover:to-green-300 transition-all"
+          className="text-xl font-bold text-siyah hover:text-sarı transition-all"
         >
           {telefon}
         </a>
@@ -111,20 +110,20 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 h-16 bg-white shadow-md flex items-center justify-between px-4 lg:hidden z-50">
-        <img src="/images/logo.png" alt="Psikolog Sena Düz" className="h-14" />
-        <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-yesil">
+      <div className="fixed top-0 left-0 right-0 h-16 bg-beyaz shadow-md flex items-center justify-between px-4 lg:hidden z-50">
+        <img src="/images/logo.png" alt="Logo" className="h-14" />
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-2 text-siyah hover:text-sarı"
+        >
           {isOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
         </button>
       </div>
-      <div className="hidden border-r-2 border-yesil/60 lg:block fixed left-0 w-80 h-screen overflow-y-auto">
-        <div className="h-full bg-white shadow-xl flex flex-col">
+
+      <div className="hidden border-r-2 border-sarı lg:block fixed left-0 w-80 h-screen overflow-y-auto">
+        <div className="h-full bg-beyaz shadow-xl flex flex-col">
           <div className="px-4 py-6">
-            <img
-              src="/images/logo.png"
-              alt="Psikolog Sena Düz"
-              className="w-48 mx-auto"
-            />
+            <img src="/images/logo.png" alt="Logo" className="w-48 mx-auto" />
           </div>
           <nav className="w-full flex-1">
             {menuItems.map((item) => (
@@ -139,7 +138,7 @@ const Sidebar = () => {
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={sidebarVariants}
-        className="lg:hidden fixed top-0 left-0 h-screen bg-white shadow-xl w-64 z-40"
+        className="lg:hidden fixed top-0 left-0 h-screen bg-beyaz shadow-xl w-64 z-40"
       >
         <nav className="mt-20">
           {menuItems.map((item) => (

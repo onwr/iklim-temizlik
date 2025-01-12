@@ -36,7 +36,7 @@ const Gallery = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen py-20 px-4 lg:px-16">
+    <div className="border-t min-h-screen py-20 px-4 lg:px-16">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-6">
           <h2 className="text-5xl font-bold text-gray-800 tracking-tight">
