@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  AiOutlineHome,
-  AiOutlineUser,
-  AiOutlinePhone,
-  AiOutlineFileText,
-  AiOutlineStar,
-} from "react-icons/ai";
+import { AiOutlineHome, AiOutlinePhone, AiOutlineStar } from "react-icons/ai";
 import {
   RiArticleLine,
   RiMenuLine,
@@ -104,7 +98,7 @@ const Sidebar = () => {
 
   const SocialAndContact = ({ isMobile = false }) => (
     <div className={`px-4 py-0 ${isMobile ? "mt-4" : "mt-auto"}`}>
-      <div className="text-center w-full rounded-t-full bg-yesil">
+      <div className="text-center w-full rounded-full md:rounded-t-full bg-yesil">
         <a
           href={"tel:" + telefon}
           className="text-xl font-bold  text-white text-transparent hover:from-green-500 hover:to-green-300 transition-all"

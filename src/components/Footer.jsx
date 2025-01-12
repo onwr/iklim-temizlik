@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../db/Firebase";
 
@@ -115,17 +116,17 @@ const Footer = () => {
             className="space-y-4"
           >
             <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Hızlı Erişim
+              Sosyal Medya
             </h3>
-            <div className="flex flex-col gap-3">
-              <button className="bg-yesil text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-yesil/90 transition-colors flex items-center justify-center gap-2">
-                <Clock className="w-4 h-4" />
-                Hizmet Al
-              </button>
-              <button className="border-2 border-yesil text-yesil px-6 py-2 rounded-full text-sm font-medium hover:bg-yesil hover:text-white transition-colors flex items-center justify-center gap-2">
-                <MessageSquare className="w-4 h-4" />
-                İletişime Geç
-              </button>
+            <div className="flex gap-4">
+              <a
+                href={contactInfo.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-500 hover:text-red-500/80 transition-colors"
+              >
+                <FaInstagram className="w-6 h-6" />
+              </a>
             </div>
           </motion.div>
         </div>

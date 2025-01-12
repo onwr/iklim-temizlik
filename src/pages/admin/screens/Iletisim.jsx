@@ -23,6 +23,7 @@ const IletisimYonetim = () => {
     mail: "",
     saatler: "",
     adres: "",
+    instagram: "",
     about: {
       title: "",
       description: "",
@@ -104,6 +105,7 @@ const IletisimYonetim = () => {
         mail: formData.mail,
         saatler: formData.saatler,
         adres: formData.adres,
+        instagram: formData.instagram,
       });
 
       const aboutDocRef = doc(db, "about", "content");
@@ -264,6 +266,20 @@ const IletisimYonetim = () => {
               onChange={handleChange}
               className="w-full rounded-lg border border-gray-300 p-2.5 focus:border-[#26355e]/50 focus:outline-none focus:ring-1 focus:ring-[#26355e]/80"
               placeholder="Adres giriniz"
+            />
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-700">
+              Instagram
+            </label>
+            <input
+              type="text"
+              name="instagram"
+              value={formData.instagram}
+              onChange={handleChange}
+              className="w-full rounded-lg border border-gray-300 p-2.5 focus:border-[#26355e]/50 focus:outline-none focus:ring-1 focus:ring-[#26355e]/80"
+              placeholder="Instagram Adresi giriniz"
             />
           </div>
 
