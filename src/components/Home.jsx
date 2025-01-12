@@ -5,6 +5,7 @@ import Contact from "./home/Contact";
 import BlogSection from "./home/Blog";
 import Clients from "./home/Clients";
 import Footer from "./Footer";
+import Gallery from "./home/Gallery";
 
 const Home = () => {
   return (
@@ -20,6 +21,9 @@ const Home = () => {
       </section>
       <section id="referanslar">
         <Clients />
+      </section>
+      <section id="galeri">
+        <Gallery />
       </section>
       <section id="iletisim">
         <Contact />

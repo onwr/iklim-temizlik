@@ -7,7 +7,12 @@ import {
   AiOutlineFileText,
   AiOutlineStar,
 } from "react-icons/ai";
-import { RiArticleLine, RiMenuLine, RiCloseLine } from "react-icons/ri";
+import {
+  RiArticleLine,
+  RiMenuLine,
+  RiCloseLine,
+  RiGalleryFill,
+} from "react-icons/ri";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../db/Firebase";
 import { Building } from "lucide-react";
@@ -40,6 +45,7 @@ const Sidebar = () => {
       title: "Referanslarımız",
       icon: <AiOutlineStar size={24} />,
     },
+    { id: "galeri", title: "Galeri", icon: <RiGalleryFill size={24} /> },
     { id: "iletisim", title: "İletişim", icon: <AiOutlinePhone size={24} /> },
   ];
 

@@ -60,8 +60,10 @@ const Sidebar = ({ screen }) => {
                   items: [{ label: "Bloglar", action: () => screen(2) }],
                 },
                 {
-                  label: "Psikolojik Testler",
-                  items: [{ label: "Test Yönetimi", action: () => screen(3) }],
+                  label: "Galeri",
+                  items: [
+                    { label: "Galeri Yönetimi", action: () => screen(3) },
+                  ],
                 },
                 {
                   label: "İletişim",
