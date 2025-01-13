@@ -37,7 +37,7 @@ const Home = () => {
 
       {telefon && (
         <a
-          href={`https://wa.me/${telefon}`}
+          href={`https://wa.me/+905525464545`}
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-4 right-4 flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition"
