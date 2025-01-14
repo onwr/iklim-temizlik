@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import {  FaInstagram } from "react-icons/fa";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../db/Firebase";
 
