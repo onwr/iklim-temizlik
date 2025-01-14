@@ -1,22 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../db/Firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { Loader2 } from "lucide-react";
+import { Loader2, Play } from "lucide-react";
 
 const Gallery = () => {
-  const [images, setImages] = useState([]);
+  const [mediaItems, setMediaItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const videos = [
+    "/videos/video1.mp4",
+    "/videos/video2.mp4",
+    "/videos/video3.mp4",
+    "/videos/video4.mp4",
+    "/videos/video5.mp4",
+    "/videos/video6.mp4",
+    "/videos/video7.mp4",
+    "/videos/video8.mp4",
+    "/videos/video9.mp4",
+    "/videos/video10.mp4",
+    "/videos/video11.mp4",
+  ].map((url, index) => ({
+    id: `video-${index + 1}`,
+    type: "video",
+    url,
+  }));
 
   useEffect(() => {
-    const fetchGalleryImages = async () => {
+    const fetchGalleryMedia = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "galeri"));
         const imageData = [];
         querySnapshot.forEach((doc) => {
-          imageData.push({ id: doc.id, ...doc.data() });
+          imageData.push({
+            id: doc.id,
+            type: "image",
+            url: doc.data().imageUrl,
+            ...doc.data(),
+          });
         });
-        setImages(imageData);
+        setMediaItems([...imageData, ...videos]);
       } catch (error) {
         console.log("Hata:", error);
       } finally {
@@ -24,7 +47,7 @@ const Gallery = () => {
       }
     };
 
-    fetchGalleryImages();
+    fetchGalleryMedia();
   }, []);
 
   if (loading) {
@@ -35,72 +58,120 @@ const Gallery = () => {
     );
   }
 
+  const imageItems = mediaItems.filter((item) => item.type === "image");
+  const videoItems = mediaItems.filter((item) => item.type === "video");
+
+  const MediaCard = ({ item }) => (
+    <div
+      className="break-inside-avoid group cursor-pointer"
+      onClick={() => setSelectedItem(item)}
+    >
+      <div className="bg-white rounded-2xl shadow-md overflow-hidden transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
+        <div className="relative">
+          {item.type === "image" ? (
+            <img
+              src={item.url}
+              alt={item.title}
+              className="w-full h-[600px] object-contain transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="relative aspect-video bg-gray-100">
+              <video src={item.url} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Play className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300" />
+        </div>
+        {item.type === "image" && (
+          <div className="p-6">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              {item.title}
+            </h3>
+            {item.description && (
+              <p className="text-gray-600 leading-relaxed">
+                {item.description}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <div className="border-t min-h-screen py-20 px-4 lg:px-16">
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-6">
           <h2 className="text-5xl font-bold text-gray-800 tracking-tight">
-            Galeri
+            Resim ve Videolar
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Çalışmalarımızdan bazı örnekler
           </p>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-          {images.map((image) => (
-            <div
-              key={image.id}
-              className="break-inside-avoid group cursor-pointer"
-              onClick={() => setSelectedImage(image)}
-            >
-              <div className="bg-white rounded-2xl shadow-md overflow-hidden transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="relative">
-                  <img
-                    src={image.imageUrl}
-                    alt={image.title}
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {image.title}
-                  </h3>
-                  {image.description && (
-                    <p className="text-gray-600 leading-relaxed">
-                      {image.description}
-                    </p>
-                  )}
-                </div>
-              </div>
+        {imageItems.length > 0 && (
+          <div>
+            <h3 className="text-3xl font-semibold text-gray-800 mb-8">
+              Resimler
+            </h3>
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+              {imageItems.map((item) => (
+                <MediaCard key={item.id} item={item} />
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        )}
+
+        {videoItems.length > 0 && (
+          <div>
+            <h3 className="text-3xl font-semibold text-gray-800 mb-8">
+              Videolar
+            </h3>
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+              {videoItems.map((item) => (
+                <MediaCard key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      {selectedImage && (
+      {selectedItem && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedItem(null)}
         >
           <div
             className="max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={selectedImage.imageUrl}
-              alt={selectedImage.title}
-              className="w-full h-full object-contain max-h-[80vh]"
-            />
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                {selectedImage.title}
-              </h3>
-              {selectedImage.description && (
-                <p className="text-gray-600">{selectedImage.description}</p>
-              )}
-            </div>
+            {selectedItem.type === "image" ? (
+              <>
+                <img
+                  src={selectedItem.url}
+                  alt={selectedItem.title}
+                  className="w-full h-full object-contain max-h-[80vh]"
+                />
+                <div className="p-6">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                    {selectedItem.title}
+                  </h3>
+                  {selectedItem.description && (
+                    <p className="text-gray-600">{selectedItem.description}</p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <video
+                src={selectedItem.url}
+                controls
+                className="w-full h-full object-contain"
+                autoPlay
+              />
+            )}
           </div>
         </div>
       )}
